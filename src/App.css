@@ -24,6 +24,10 @@
   color: white;
 }
 
+.counter-box {
+  margin: 10px;
+}
+
 .App-link {
   color: #61dafb;
 }

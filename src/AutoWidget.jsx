@@ -3,15 +3,18 @@ import { Context } from './Context'
 import AutoWidgetButton from './AutoWidgetButton'
 
 const AutoWidget = () => {
-  const { autoWidgetCountdown, updateButtonDisplay } = useContext(Context)
+  const { counter, autoWidgetCountdown, buttonDisplay, updateButtonDisplay } = useContext(Context)
 
-  useEffect(() => {
-    if (autoWidgetCountdown > 0) {
-      updateButtonDisplay('autoWidgetButton', false)
-    } else if (autoWidgetCountdown <= 0) {
-      updateButtonDisplay('autoWidgetButton', true)
-    }
-  }, [autoWidgetCountdown])
+  // useEffect(() => {
+  // TODO: use this to monitor whether a change needs to be made to buttonDisplay (be conservative, exit as early as possible!!); if a change needs to be made, call updateButtonDisplay (don't pass anything) to update all buttonDisplay state variables; do the same in Product
+    // if (autoWidgetCountdown > 0) {
+    //   updateButtonDisplay('autoWidgetButton', null)
+    // } else if (autoWidgetCountdown === 0) {
+    //   updateButtonDisplay('autoWidgetButton', true)
+    // } else if (autoWidgetCountdown === null) {
+    //   updateButtonDisplay('autoWidgetButton', false)
+    // }
+  // }, [autoWidgetCountdown])
 
   return(
     <div>

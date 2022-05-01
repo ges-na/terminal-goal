@@ -3,13 +3,21 @@ import { Context } from './Context'
 
 const ProductButton = () => {
   const {
+    counter,
+    productCost,
     buttonDisplay,
     makeProduct,
   } = useContext(Context)
 
   return (<>
-    {buttonDisplay.productButton && (
-      <button onClick={makeProduct}>Make product</button>
+    {console.log(counter, productCost, buttonDisplay.productButton)}
+    {Boolean(buttonDisplay.productButton !== null) && (
+      <button
+        disabled={!buttonDisplay.productButton}
+        onClick={makeProduct}
+      >
+        Make product
+      </button>
     )}
   </>)
 }

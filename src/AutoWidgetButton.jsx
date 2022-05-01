@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import { Context } from './Context'
 
 const AutoWidgetButton = () => {
@@ -6,6 +6,7 @@ const AutoWidgetButton = () => {
     autoWidgetCountdown,
     setAutoWidgetCountdown,
     buttonDisplay,
+    updateButtonDisplay,
     setAutoWidgetOn,
     setWidgetInterval,
     autoIncrement,
@@ -17,19 +18,35 @@ const AutoWidgetButton = () => {
     setAutoWidgetCountdown(null);
   }
 
-  if (buttonDisplay.autoWidgetButton === true) {
-    return (
-      <button onClick={onWidgetClick}>Turn on Auto-Widget</button>
-    )
+  const autoWidgetOff = () => {
+    setAutoWidgetOn(false);
+    setWidgetInterval(0);
+    updateButtonDisplay('autoWidgetButton', true);
+    setAutoWidgetCountdown(0)
   }
-  if (buttonDisplay.autoWidgetButton === false) {
-    return (
+
+  return(<>
+    {buttonDisplay.autoWidgetButton === true && (
+      <button
+        onClick={onWidgetClick}
+      >
+        Turn on Auto-Widget
+      </button>
+    )}
+    {buttonDisplay.autoWidgetButton === false && (
+      <button
+        onClick={autoWidgetOff}
+      >
+        Turn off Auto-Widget
+      </button>
+    )}
+    {buttonDisplay.autoWidgetButton === null && (
       <div>
         {autoWidgetCountdown} products until auto-widget
       </div>
-    )
-  }
-  return <></>
+    )}
+  </>)
 }
+
 
 export default AutoWidgetButton;
